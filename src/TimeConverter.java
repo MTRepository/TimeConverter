@@ -27,7 +27,7 @@ public class TimeConverter {
 
     public static String formatDuration(int seconds) {
 
-        if(seconds == 0) System.out.println("now");
+        if(seconds == 0) return "now";
 
         int remainder;
         boolean inYears;
@@ -90,10 +90,10 @@ public class TimeConverter {
         sb.deleteCharAt(sb.toString().length()-1);
         sb.deleteCharAt(sb.toString().length()-1);
 
-        int andPosition = sb.toString().lastIndexOf(",");
         String result;
 
-        if(seconds > 60) {
+        if(sb.toString().contains(",")) {
+            int andPosition = sb.toString().lastIndexOf(",");
             result = sb.toString().substring(0,andPosition)
                     + sb.toString().substring(andPosition).replace(","," and");
         } else {
